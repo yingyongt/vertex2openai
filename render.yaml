@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: agentplatform2api
+    env: python
+    region: singapore
+    buildCommand: pip install -r app/requirements.txt
+    startCommand: cd app && uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: API_KEY
+        value: change-me-please
+      - key: VERTEX_EXPRESS_API_KEY
+        value: your_vertex_express_api_key
